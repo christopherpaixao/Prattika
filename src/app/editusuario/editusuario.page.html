@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+    <ion-title>editusuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <form (ngSubmit)="editUsuario()">
+       
+        <ion-item>
+            <ion-label>Nome</ion-label>
+            <ion-input type="text" [(ngModel)]="usuario.username" name="username"></ion-input>
+          </ion-item>
+  
+          <ion-item>
+            <ion-label>Email</ion-label>
+            <ion-input type="text" [(ngModel)]="usuario.email" name="email"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label>Foto</ion-label>
+              <ion-input type="text" [(ngModel)]="usuario.foto" name="foto"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Senha</ion-label>
+                <ion-input type="text" [(ngModel)]="usuario.password" name="password"></ion-input>
+              </ion-item>
+  
+    <button ion-button type="submit" block>Atualizar Usuário</button>
+      </form>
+
+
+</ion-content>

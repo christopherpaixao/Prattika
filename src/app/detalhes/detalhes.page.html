@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+    <ion-title>detalhes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-card>
+        <ion-img [src]="postagem.imagem"></ion-img>
+        <ion-card-content>
+          <ion-card-title>
+            {{postagem.titulo}}
+            </ion-card-title>
+          <p>
+            {{postagem.corpo}}
+          </p>
+        </ion-card-content>
+      </ion-card>
+
+</ion-content>

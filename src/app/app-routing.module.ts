@@ -7,14 +7,17 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
-  {
-    path: 'home',
-    loadChildren: './home/home.module#HomePageModule'
-  },
-  {
-    path: 'list',
-    loadChildren: './list/list.module#ListPageModule'
-  }
+  { path: 'home', loadChildren: './home/home.module#HomePageModule'  },
+  { path: 'list', loadChildren: './list/list.module#ListPageModule'  },
+  { path: 'postagens', loadChildren: './postagens/postagens.module#PostagensPageModule' },
+  { path: 'postagens/:id', loadChildren: './postagens/postagens.module#PostagensPageModule' },
+  { path: 'usuarios', loadChildren: './usuarios/usuarios.module#UsuariosPageModule' },
+  { path: 'addpostagem/:id', loadChildren: './addpostagem/addpostagem.module#AddpostagemPageModule' },
+  { path: 'detalhes/:id', loadChildren: './detalhes/detalhes.module#DetalhesPageModule' },
+  { path: 'editpostagem/:id', loadChildren: './editpostagem/editpostagem.module#EditpostagemPageModule' },
+  { path: 'criar-login', loadChildren: './criar-login/criar-login.module#CriarLoginPageModule' },
+  { path: 'criarconta', loadChildren: './criarconta/criarconta.module#CriarcontaPageModule' },
+  { path: 'editusuario/:id', loadChildren: './editusuario/editusuario.module#EditusuarioPageModule' }
 ];
 
 @NgModule({

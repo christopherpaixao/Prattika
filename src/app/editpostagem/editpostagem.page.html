@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+    <ion-title>editpostagem</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <form (ngSubmit)="edit()">
+        
+        <ion-item>
+          <ion-label>Título</ion-label>
+          <ion-input type="text" [(ngModel)]="postagem.titulo" name="titulo"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Descrição</ion-label>
+          <ion-textarea [(ngModel)]="postagem.corpo" name="descricao"></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Imagem</ion-label>
+            <ion-input type="text" [(ngModel)]="postagem.imagem" name="imagem"></ion-input>
+          </ion-item>
+
+
+        <button ion-button type="submit" block>Atualizar</button>
+      </form>
+
+</ion-content>

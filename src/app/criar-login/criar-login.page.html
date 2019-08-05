@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>criarLogin</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-content padding>
+        <form (ngSubmit)="criarConta()">
+              <ion-item>
+                  <ion-label>Nome</ion-label>
+                  <ion-input type="text" [(ngModel)]="usuario.username" name="username"></ion-input>
+                </ion-item>
+        
+                <ion-item>
+                  <ion-label>Email</ion-label>
+                  <ion-textarea [(ngModel)]="usuario.email" name="email"></ion-textarea>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>Senha</ion-label>
+                    <ion-input type="text" [(ngModel)]="usuario.password" name="password"></ion-input>
+                  </ion-item>
+      
+          <button ion-button type="submit" block>Criar Usuário</button>
+        </form>
+
+</ion-content>

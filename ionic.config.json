@@ -1,5 +1,7 @@
 {
   "name": "pratticaionic",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
