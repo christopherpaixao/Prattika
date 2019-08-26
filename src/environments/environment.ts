@@ -6,8 +6,7 @@ export const environment = {
   production: false
 };
 
-export const SERVER_URL="http://127.0.0.1:3333"
-//export const SERVER_URL="http://prattika.com.br:21019"
+export const SERVER_URL="http://prattika.com.br:21019"
 
 /*
  * For easier debugging in development mode, you can import the following file
@@ -16,4 +15,4 @@ export const SERVER_URL="http://127.0.0.1:3333"
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+ import 'zone.js/dist/zone-error';  // Included with Angular CLI.

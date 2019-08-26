@@ -1,4 +1,4 @@
-import { SERVER_URL } from './../../environments/environment';
+import { SERVER_URL } from 'src/environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Usuarios } from 'src/Models/Usuarios';

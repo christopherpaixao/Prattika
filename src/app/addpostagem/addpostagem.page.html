@@ -20,13 +20,18 @@
           <ion-textarea [(ngModel)]="postagem.corpo" name="descricao"></ion-textarea>
         </ion-item>
 
-        <ion-item>
+        <!-- <ion-item>
             <ion-label>Imagem</ion-label>
             <ion-input type="text" [(ngModel)]="postagem.imagem" name="imagem"></ion-input>
-          </ion-item>
+          </ion-item> -->
+          
+         
 
 
         <button ion-button type="submit" block>Publicar</button>
       </form>
+      <button ion-button (click)="abrirCamera()">Abrir Camera</button>
+          <button ion-button (click)="abrirGaleria()">Abrir Galeria</button>
+          <img [src]="base64Image"/>
 
 </ion-content>
