@@ -14,6 +14,8 @@ import { ImagePicker } from '@ionic-native/image-picker/ngx';//editor de imagem
 import { Camera } from '@ionic-native/Camera/ngx';
 import { File } from '@ionic-native/File/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
+import { MediaCapture } from '@ionic-native/media-capture/ngx';
+import { Media } from '@ionic-native/media/ngx';
  
 import { IonicStorageModule } from '@ionic/storage/';
 
@@ -34,7 +36,9 @@ import { IonicStorageModule } from '@ionic/storage/';
     ImagePicker,
     Camera,
     File,
-    FilePath
+    FilePath,
+    MediaCapture,
+    Media
   ],
   bootstrap: [AppComponent]
 })

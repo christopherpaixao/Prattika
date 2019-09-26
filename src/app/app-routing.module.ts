@@ -17,7 +17,8 @@ const routes: Routes = [
   { path: 'editpostagem/:id', loadChildren: './editpostagem/editpostagem.module#EditpostagemPageModule' },
   { path: 'criar-login', loadChildren: './criar-login/criar-login.module#CriarLoginPageModule' },
   { path: 'criarconta', loadChildren: './criarconta/criarconta.module#CriarcontaPageModule' },
-  { path: 'editusuario/:id', loadChildren: './editusuario/editusuario.module#EditusuarioPageModule' }
+  { path: 'editusuario/:id', loadChildren: './editusuario/editusuario.module#EditusuarioPageModule' },  { path: 'timeline', loadChildren: './timeline/timeline.module#TimelinePageModule' }
+
 ];
 
 @NgModule({
