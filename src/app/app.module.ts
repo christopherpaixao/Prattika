@@ -19,6 +19,8 @@ import { Media } from '@ionic-native/media/ngx';
  
 import { IonicStorageModule } from '@ionic/storage/';
 
+import { AuthModule } from  './auth/auth.module';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -27,7 +29,8 @@ import { IonicStorageModule } from '@ionic/storage/';
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AuthModule
   ],
   providers: [
     StatusBar,

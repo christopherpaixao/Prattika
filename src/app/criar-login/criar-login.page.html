@@ -4,26 +4,42 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+  <form (ngSubmit)="criarLogin()">
 
-    <ion-content padding>
-        <form (ngSubmit)="criarLogin()">
-              <ion-item>
-                  <ion-label>Nome</ion-label>
-                  <ion-input type="text" [(ngModel)]="usuario.username" name="username"></ion-input>
-                </ion-item>
-        
-                <ion-item>
-                  <ion-label>Email</ion-label>
-                  <ion-textarea [(ngModel)]="usuario.email" name="email"></ion-textarea>
-                </ion-item>
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+            <h3>Create your account!</h3>
+          </div>
 
-                <ion-item>
-                    <ion-label>Senha</ion-label>
-                    <ion-input type="text" [(ngModel)]="usuario.password" name="password"></ion-input>
-                  </ion-item>
-      
-          <button ion-button type="submit" block>Criar Usuário</button>
-        </form>
+          <div padding>
+
+            <ion-item>
+              <ion-label>Nome</ion-label>
+              <ion-input type="text" [(ngModel)]="usuario.username" name="username"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Email</ion-label>
+              <ion-textarea [(ngModel)]="usuario.email" name="email"></ion-textarea>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Senha</ion-label>
+              <ion-input type="text" [(ngModel)]="usuario.password" name="password"></ion-input>
+            </ion-item>
+
+          </div>
+          <div padding>
+
+            <button ion-button type="submit" block>Criar Usuário</button>
+          </div>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 
 </ion-content>

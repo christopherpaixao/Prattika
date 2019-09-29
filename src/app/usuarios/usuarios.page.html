@@ -27,12 +27,19 @@
           <ion-button [routerLink]="['/addpostagem/' + usuario.id]" routerdirection="forward">
             <ion-icon name="add-circle-outline"></ion-icon>
           </ion-button>
-          <ion-button (click)='deletarUsuario(usuario.id)'>
-            <ion-icon name="trash"></ion-icon>
+          <ion-button (click)="captureVideo()">
+            <ion-icon name="videocam"></ion-icon>
+          </ion-button>
+          <ion-button (click)="captureAudio()">
+            <ion-icon name="microphone"></ion-icon>
           </ion-button>
           <ion-button [routerLink]="['/editusuario/' + usuario.id]" routerdirection="forward">
             <ion-icon name="create"></ion-icon>
           </ion-button>
+          <ion-button (click)='deletarUsuario(usuario.id)'>
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+          
         </ion-row>
       </ion-grid>
     </ion-item>
