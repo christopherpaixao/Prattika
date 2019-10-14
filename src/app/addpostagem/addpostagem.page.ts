@@ -32,11 +32,10 @@ export class AddpostagemPage implements OnInit {
   addPostagem(){
     this.http.post( SERVER_URL + "/postagens",this.postagem).subscribe(
       result=>{
-        console.log
+        console.log(result)
         this.router.navigate(['/usuarios'])
       }
     )
-    console.log
   }
 
   abrirCamera(){

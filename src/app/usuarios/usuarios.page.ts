@@ -37,7 +37,7 @@ export class UsuariosPage implements OnInit {
     //busca no webservice e caminho dos usuarios
     this.http.get<Usuarios[]>(SERVER_URL  +  "/usuarios").subscribe( 
     result=>{
-      //console.log(result)
+      console.log(result)
       this.listausuarios=result
     }
     )
@@ -47,7 +47,7 @@ export class UsuariosPage implements OnInit {
     //busca no webservice e caminho dos usuarios
      this.http.delete(SERVER_URL  +  "/usuarios/" + id).subscribe( 
     result=>{
-      //console.log()
+      console.log(result)
       //this.router.navigate(['/usuarios'])
       window.location.reload()
       

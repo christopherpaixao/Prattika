@@ -1,38 +1,48 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
-      <ion-buttons slot="start">
-          <ion-back-button></ion-back-button>
-        </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
     <ion-title>editusuario</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content padding>
+<ion-content color="primary">
 
-    <form (ngSubmit)="editUsuario()">
-       
-        <ion-item>
+  <form (ngSubmit)="editUsuario()">
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+            <h3>Altere seus Dados!</h3>
+          </div>
+
+          <ion-item>
             <ion-label>Nome</ion-label>
             <ion-input type="text" [(ngModel)]="usuario.username" name="username"></ion-input>
           </ion-item>
-  
+
           <ion-item>
             <ion-label>Email</ion-label>
             <ion-input type="text" [(ngModel)]="usuario.email" name="email"></ion-input>
           </ion-item>
 
           <ion-item>
-              <ion-label>Foto</ion-label>
-              <ion-input type="text" [(ngModel)]="usuario.foto" name="foto"></ion-input>
-            </ion-item>
+            <ion-label>Foto</ion-label>
+            <ion-input type="text" [(ngModel)]="usuario.foto" name="foto"></ion-input>
+          </ion-item>
 
-            <ion-item>
-                <ion-label>Senha</ion-label>
-                <ion-input type="text" [(ngModel)]="usuario.password" name="password"></ion-input>
-              </ion-item>
-  
-    <button ion-button type="submit" block>Atualizar Usuário</button>
-      </form>
+          <ion-item>
+            <ion-label>Senha</ion-label>
+            <ion-input type="text" [(ngModel)]="usuario.password" name="password"></ion-input>
+          </ion-item>
+          <div padding>
+            <ion-button size="large" type="submit" expand="block">Atualizar Usuário</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 
 
 </ion-content>

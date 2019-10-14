@@ -4,4 +4,5 @@ export class Usuarios{
     public username:string;
     public password:string;
     public foto:string;
+    public access_token: string;
 }

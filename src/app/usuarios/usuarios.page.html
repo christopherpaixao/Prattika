@@ -7,16 +7,14 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content color="primary">
 
   <ion-list>
     <ion-item *ngFor="let usuario of listausuarios">
       <ion-grid>
-
-        <ion-avatar>
+        <ion-avatar [routerLink]="['/profile/' + usuario.id]" routerdirection="forward">
           <ion-img [src]="usuario.foto"></ion-img>
         </ion-avatar>
-
         <ion-row>
           <ion-label>{{usuario.username}}</ion-label>
         </ion-row>
@@ -27,6 +25,9 @@
           <ion-button [routerLink]="['/addpostagem/' + usuario.id]" routerdirection="forward">
             <ion-icon name="add-circle-outline"></ion-icon>
           </ion-button>
+          <ion-button [routerLink]="['/timeline/' + usuario.id]" routerdirection="forward">
+            <ion-icon name="albums"></ion-icon>
+          </ion-button>
           <ion-button (click)="captureVideo()">
             <ion-icon name="videocam"></ion-icon>
           </ion-button>
@@ -36,10 +37,10 @@
           <ion-button [routerLink]="['/editusuario/' + usuario.id]" routerdirection="forward">
             <ion-icon name="create"></ion-icon>
           </ion-button>
+          
           <ion-button (click)='deletarUsuario(usuario.id)'>
             <ion-icon name="trash"></ion-icon>
           </ion-button>
-          
         </ion-row>
       </ion-grid>
     </ion-item>

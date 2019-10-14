@@ -3,58 +3,51 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    
+
     <ion-title>postagens</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+  <ion-card *ngFor="let postagem of listapostagens">
+    <img [src]="postagem.imagem" />
+    <ion-card-content>
 
-    <ion-card *ngFor="let postagem of listapostagens">
-        <img [src]="postagem.imagem"/>
-        <ion-card-content>
-            
-            <ion-card-title>
-                {{postagem.titulo}}
-                </ion-card-title><br/>
-                <div class="ion-text-justify">
-              <p>
-                {{postagem.corpo}}
-              </p>
-            </div>
-    <!-- <ion-button [routerLink]="['/detalhes/' + postagem.id]" routerdirection="forward">Detalhes</ion-button> -->
-    <ion-button [routerLink]="['/editpostagem/' + postagem.id]" routerdirection="forward">
-      <ion-icon name="brush"></ion-icon>Editar</ion-button>
+      <ion-card-title>
+        {{postagem.titulo}}
+      </ion-card-title><br />
+      <div class="ion-text-justify">
+        <p>
+          {{postagem.corpo}}
+        </p>
+      </div>
+      <!-- <ion-button [routerLink]="['/detalhes/' + postagem.id]" routerdirection="forward">Detalhes</ion-button> -->
 
-    <ion-button (click)='deletarPostagen(postagem.id)'>
-        <ion-icon name="trash"></ion-icon>Exluir</ion-button>
-  </ion-card-content>
+    </ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-2>
+          <ion-button size="small" fill="outline" [routerLink]="['/editpostagem/' + postagem.id]"
+            routerdirection="forward">
+            <ion-icon name="brush"></ion-icon>
+          </ion-button>
+          <ion-button size="small" fill="outline">
+            <ion-icon name='star'></ion-icon>
+          </ion-button>
+          <ion-button size="small" fill="outline">
+            <ion-icon name='share-alt'></ion-icon>
+          </ion-button>
+          <ion-button size="small" fill="outline" (click)='deletarPostagen(postagem.id)'>
+              <ion-icon name="trash"></ion-icon>
+            </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
-  <ion-row no-padding>
-      <ion-col>
-        <button ion-button clear small color="danger" icon-start>
-          <ion-icon name='star'></ion-icon>
-          Favorite
-        </button>
-      </ion-col>
-      <!-- <ion-col text-center>
-        <button ion-button clear small color="danger" icon-start>
-          <ion-icon name='musical-notes'></ion-icon>
-          Listen
-        </button>
-      </ion-col> -->
-      <ion-col text-center>
-        <button ion-button clear small color="danger" icon-start>
-          <ion-icon name='share-alt'></ion-icon>
-          Share
-        </button>
-      </ion-col>
-    </ion-row>
-  
-</ion-card>
+  </ion-card>
 
   <!-- primeira forma de listagem -->
-    <!-- <ion-list>
+  <!-- <ion-list>
         <ion-item *ngFor="let postagem of listapostagens">
             <ion-thumbnail slot="start">
                 <img [src]="postagem.imagem"/>
@@ -66,7 +59,7 @@
         </ion-item>
     </ion-list> -->
 
-    <!-- fIM primeira forma de listagem -->
+  <!-- fIM primeira forma de listagem -->
 
 
 </ion-content>

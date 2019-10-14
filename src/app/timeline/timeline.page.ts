@@ -4,6 +4,10 @@ import { Storage } from '@ionic/storage';
 import { MediaCapture, MediaFile, CaptureError, CaptureVideoOptions } from '@ionic-native/media-capture/ngx';
 import { Media, MediaObject  } from '@ionic-native/media/ngx';
 import { File } from '@ionic-native/File/ngx';
+import { Postagens } from 'src/Models/Postagens';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { SERVER_URL } from 'src/environments/environment';
 
 const MEDIA_FILES_KEY = 'mediaFiles';
 
@@ -22,9 +26,44 @@ export class TimelinePage {
     slidesPerView: 3
   };
 
-  constructor(public navCtrl: NavController, private mediaCapture: MediaCapture,
+  /* Postagens */
+  listapostagens:Postagens[]
+    idusuario:string
+    idpostagem:string
+
+  constructor(public route:ActivatedRoute, public http:HttpClient, public router:Router,
+    public navCtrl: NavController, private mediaCapture: MediaCapture,
     private storage: Storage, private media: Media, private file: File) {
 
+      this.route.paramMap.subscribe( (params:ParamMap) =>
+      { 
+        this.idusuario=params.get('id')
+      })
+
+  }
+
+  ngOnInit() {
+    this.listarpostagensusuario()
+  }
+
+  listarpostagensusuario(){
+    //busca no webservice e caminho dos usuarios
+    this.http.get<Postagens[]>(SERVER_URL  +  "/postagensusuarios/" + this.idusuario).subscribe( 
+      result=>{
+        //console.log(result)
+        this.listapostagens=result['postagens']
+      }
+      )
+  }
+
+  listarpostagens(){
+    //busca no webservice e caminho dos usuarios
+    this.http.get<Postagens[]>(SERVER_URL  +  "/postagens/" + this.idpostagem).subscribe( 
+    result=>{
+      //console.log(result)
+      this.listapostagens=result
+    }
+    )
   }
 
   ionViewDidLoad() {

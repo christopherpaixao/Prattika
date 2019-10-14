@@ -24,6 +24,7 @@ export class CriarcontaPage implements OnInit {
   criarConta(){
     this.http.post( SERVER_URL + "/usuarios",this.usuario).subscribe(
       result=>{
+        console.log(result)
         this.router.navigate(['/home'])
       }
     )

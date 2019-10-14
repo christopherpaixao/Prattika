@@ -18,7 +18,7 @@
       <ion-fab-button (click)="captureVideo()">
         <ion-icon name="videocam"></ion-icon>
       </ion-fab-button>
-      <ion-fab-button >
+      <ion-fab-button>
         <ion-icon name="paper"></ion-icon>
       </ion-fab-button>
       <ion-fab-button (click)="captureAudio()">
@@ -30,10 +30,10 @@
 </ion-header>
 
 <ion-content>
-  
+
   <!-- <ion-card class="card2"></ion-card> -->
 
-   <!-- <ion-list>
+  <!-- <ion-list>
     <ion-item *ngFor="let file of mediaFiles" tappable (click)="play(file)" text-wrap>
       {{ file.name }}
       <p>{{ file.size / 1000 / 1000 | number }} MB</p>
@@ -41,7 +41,7 @@
   </ion-list>
  
   <video controls autoplay #myvideo>
-  </video> --> 
+  </video> -->
 
   <ion-item lines="none">
     <p slot="start">Vídeos</p>
@@ -70,22 +70,11 @@
     <p slot="start">Textos</p>
     <ion-icon name="arrow-forward" slot="end"></ion-icon>
   </ion-item>
-
-  <ion-slides [options]="slidesOptions">
-    <ion-slide>
-      <ion-card [style.backgroundImage]="'url(./assets/img/shingeki-no-kyojin.jpg)'" class="poster1_card"></ion-card>
-    </ion-slide>
-
-    <ion-slide>
-      <ion-card [style.backgroundImage]="'url(./assets/img/nanatsu-no-taizai.jpg)'" class="poster1_card"></ion-card>
-    </ion-slide>
-
-    <ion-slide>
-      <ion-card [style.backgroundImage]="'url(./assets/img/lucifer.jpg)'" class="poster1_card"></ion-card>
-    </ion-slide>
-
-    <ion-slide>
-      <ion-card [style.backgroundImage]="'url(./assets/img/narcos.jpg)'" class="poster1_card"></ion-card>
+  <ion-slides  [options]="slidesOptions">
+    <ion-slide *ngFor="let postagem of listapostagens">
+      <ion-card class="poster1_card" [routerLink]="['/detalhes/' + postagem.id]" routerdirection="forward">
+        <ion-img [src]="postagem.imagem"></ion-img>
+      </ion-card>
     </ion-slide>
   </ion-slides>
 

@@ -1,37 +1,45 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
       <ion-buttons slot="start">
           <ion-back-button></ion-back-button>
         </ion-buttons>
     <ion-title>addpostagem</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content padding>
+<ion-content color="primary">
+  <form (ngSubmit)="addPostagem()">
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+            <h3>Transmita Seu Conhecimento!</h3>
+          </div>
 
-    <form (ngSubmit)="addPostagem()">
-        <ion-item>
-          <ion-label>Título</ion-label>
-          <ion-input type="text" [(ngModel)]="postagem.titulo" name="titulo"></ion-input>
-        </ion-item>
 
-        <ion-item>
-          <ion-label>Descrição</ion-label>
-          <ion-textarea [(ngModel)]="postagem.corpo" name="descricao"></ion-textarea>
-        </ion-item>
+          <ion-item>
+            <ion-label>Título</ion-label>
+            <ion-input type="text" [(ngModel)]="postagem.titulo" name="titulo"></ion-input>
+          </ion-item>
 
-        <!-- <ion-item>
+          <ion-item>
+            <ion-label>Descrição</ion-label>
+            <ion-textarea type="text" [(ngModel)]="postagem.corpo" name="descricao"></ion-textarea>
+          </ion-item>
+
+          <ion-item>
             <ion-label>Imagem</ion-label>
             <ion-input type="text" [(ngModel)]="postagem.imagem" name="imagem"></ion-input>
-          </ion-item> -->
-          
-         
-
-
-        <button ion-button type="submit" block>Publicar</button>
-      </form>
-      <button ion-button (click)="abrirCamera()">Abrir Camera</button>
+          </ion-item>
+          <div padding>
+            <ion-button size="large" type="submit" expand="block">Publicar</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+  <!-- <button ion-button (click)="abrirCamera()">Abrir Camera</button>
           <button ion-button (click)="abrirGaleria()">Abrir Galeria</button>
-          <img [src]="base64Image"/>
+          <img [src]="base64Image"/> -->
 
 </ion-content>

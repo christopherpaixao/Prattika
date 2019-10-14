@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{usuario.username}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="profile-intro">
+    <ion-row>
+      <ion-col >
+        <ion-avatar class="profile-photo">
+          <ion-img [src]="usuario.foto"></ion-img>
+        </ion-avatar>
+      </ion-col>
+      <ion-col >
+        <div class="profile-info ">
+          <div class="post-count info-square">
+            <p>
+              <strong>1</strong><br>
+              <em>Post</em>
+            </p>
+          </div>
+          <div class="follower-count info-square">
+            <p>
+              <strong>1532</strong><br>
+              <em>Seguidores</em>
+            </p>
+          </div>
+          <div class="following-count info-square">
+            <p>
+              <strong>200</strong><br>
+              <em>Seguindo</em>
+            </p>
+          </div>
+        </div>
+        <div>
+          <ion-button class="follow-button">Seguir</ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+    <div class="more-details">
+      <p class="user-name"><strong>{{usuario.username}}</strong></p>
+      <p class="user-bio">Área de Atuação</p>
+    </div>
+  
+
+  <!--   <ion-grid class="profile-intro">
+    <ion-avatar class="profile-photo">
+      <ion-img [src]="usuario.foto"></ion-img>
+    </ion-avatar>
+  </ion-grid>
+
+  <div class="more-details">
+    <p class="user-name"><strong>{{usuario.username}}</strong></p>
+    <p class="user-bio">Softwèrè Engineer</p>
+  </div> -->
+
+  <ion-segment color="primary" scrollable>
+    <ion-segment-button checked>
+      <ion-label>Áreas</ion-label>
+    </ion-segment-button>
+    <ion-segment-button>
+      <ion-label>Pastas</ion-label>
+    </ion-segment-button>
+    <ion-segment-button>
+      <ion-label>Gravações</ion-label>
+    </ion-segment-button>
+    <ion-segment-button>
+    <ion-label>Seguidores</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-grid class="image-grid" *ngFor="let postagem of listapostagens">
+    <ion-row class="single-row">
+      <ion-col col-4 class="single-image">
+
+        <ion-img [src]="postagem.imagem"></ion-img>
+        <p class="user-name"><strong>{{postagem.titulo}}</strong></p>
+        <p>
+          {{postagem.corpo}}
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
