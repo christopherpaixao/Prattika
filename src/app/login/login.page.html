@@ -1,4 +1,60 @@
-<ion-content color="primary">
+<ion-content>
+  
+<div class="wrap-login-v4 offset-top-obj">
+	<div class="wrap-interval">
+		<form class="" #form="ngForm">
+			<div class="wrap-pst">
+				<div class="main-form">
+					<div class="brand">
+						<img class="parallax-obj parallax-down-obj" src="assets/img/lemon_block_w.png">
+						<hr/>
+						
+					</div>
+					<br/>
+					<ion-item lines="none" class="bdra-30 shadow-1 bg-light">
+						<ion-input type="email" [(ngModel)]="usuario.email" name="email" #email="ngModel" required placeholder="Seu email"></ion-input>
+					</ion-item>
+					<ion-item lines="none" class="bdra-30 mgt-10 shadow-1 bg-light">
+						<ion-input type="password" [(ngModel)]="usuario.password" name="password" #password="ngModel" required placeholder="Sua senha"></ion-input>
+					</ion-item>
+					<hr/>
+					<div text-right>
+						<ion-button mode="ios" size="small" fill="clear" class="txt-light" type="button">
+							Esqueceu sua senha?
+						</ion-button>
+					</div>
+				</div>
+				<div class="bg-img parallax-obj parallax-up-obj">
+					<img src="assets/img/lemon17.jpg">
+				</div>
+			</div>
+			<div text-center class="bottom-form pdl-50 pdr-50">
+				<br/>
+				<hr/>
+				<ion-button mode="ios" expand="block" shape="round" color="primary" class="txt1 spacing2 fw-600" type="submit" [disabled]="!form.form.valid" (click)="login()">
+					Login
+        </ion-button>
+        <br/>
+				
+				<div text-center class="social-login">
+					<ion-button size="small" fill="clear" class="txt2">
+						<ion-icon slot="icon-only" name="logo-facebook"></ion-icon>
+					</ion-button>
+					<ion-button size="small" fill="clear" class="txt2">
+						<ion-icon slot="icon-only" name="logo-googleplus"></ion-icon>
+					</ion-button>
+					<ion-button size="small" fill="clear" class="txt2">
+						<ion-icon slot="icon-only" name="logo-twitter"></ion-icon>
+					</ion-button>
+				</div>
+				<hr/>
+				<p>Novo Membro? <ion-button mode="ios" fill="clear" size="small" class="mgt--10" [routerLink]="['/criarconta']" routerdirection="forward">Criar conta</ion-button></p>
+			</div>
+		</form>
+	</div>
+</div>
+</ion-content>
+<!-- <ion-content color="primary">
 
 
   <form #form="ngForm" >
@@ -41,4 +97,4 @@
     </ion-grid>
   </form>
 
-</ion-content>
+</ion-content> -->

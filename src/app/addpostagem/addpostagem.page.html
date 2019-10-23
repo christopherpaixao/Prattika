@@ -15,18 +15,24 @@
           <div text-center>
             <h3>Transmita Seu Conhecimento!</h3>
           </div>
-
-
           <ion-item>
             <ion-label>Título</ion-label>
             <ion-input type="text" [(ngModel)]="postagem.titulo" name="titulo"></ion-input>
           </ion-item>
-
+         <!--  <ion-item>
+              <ion-label>Gênero</ion-label>
+              <ion-select [(ngModel)]="postagem.genero_post" name="genero_post">
+                  <ion-select-option value="romance">Românce</ion-select-option>
+                  <ion-select-option value="ciencia">Ciência</ion-select-option>
+                  <ion-select-option value="informatica">informática</ion-select-option>
+                  <ion-select-option value="leitura">Leitura</ion-select-option>
+                </ion-select>
+               <ion-input type="text" [(ngModel)]="usuario.userarea" name="userarea"></ion-input> 
+            </ion-item> -->
           <ion-item>
-            <ion-label>Descrição</ion-label>
+            <ion-label>Texto</ion-label>
             <ion-textarea type="text" [(ngModel)]="postagem.corpo" name="descricao"></ion-textarea>
           </ion-item>
-
           <ion-item>
             <ion-label>Imagem</ion-label>
             <ion-input type="text" [(ngModel)]="postagem.imagem" name="imagem"></ion-input>

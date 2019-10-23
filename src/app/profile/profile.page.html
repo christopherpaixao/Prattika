@@ -1,4 +1,97 @@
-<ion-header>
+
+<ion-content>
+    <div class="wrap-cover parallax-obj">
+        <div class="bg-profile shadow-4">
+          <img class="parallax-obj parallax-up-obj parallax-blur-obj" src="assets/img/lemon11.jpg">
+        </div>
+      </div>
+      <div class="wrap-avatar">
+        <!-- <div class="action-btn">
+          <ion-button shape="round" fill="clear" class="e2eShowPopover" (click)="toPresentPopover({ component: 'profile-page', event: event })">
+            <ion-icon name="more"></ion-icon>
+          </ion-button>
+        </div> -->
+        <div class="avt-image circle">
+          <img [src]="usuario.foto">
+        </div>
+        <!-- <div class="action-btn">
+          <ion-button shape="round" fill="clear" class="" (click)="logout()">
+            <ion-icon name="log-out"></ion-icon>
+          </ion-button>
+        </div> -->
+      </div>
+    
+    
+    
+    
+    
+    
+      <div padding class="">
+    
+        <div class="info" text-center>
+          <h2 class="fw-600 fs-26" no-margin>{{usuario.username}}</h2>
+          <p class="txt4" no-margin>Designer / Development</p>
+        </div>
+    
+    
+        <div class="pdt-20">
+          <ion-row>
+            <ion-col text-center>
+              <h5 no-margin class="fs-14 txt4 fw-400">Liked</h5>
+              <p no-margin class="txt3 fs-18 fw-600">2,5K</p>
+            </ion-col>
+            <ion-col text-center>
+              <h5 no-margin class="fs-14 txt4 fw-400">Posted</h5>
+              <p no-margin class="txt3 fs-18 fw-600">87</p>
+            </ion-col>
+            <ion-col text-center>
+              <h5 no-margin class="fs-14 txt4 fw-400">Follower</h5>
+              <p no-margin class="txt3 fs-18 fw-600">200</p>
+            </ion-col>
+          </ion-row>
+          <p text-center class="txt4 pd-20 pdt-10">The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc</p>
+        </div>
+    
+    
+
+        <div class="pdt-15">
+          <div class="st-name">
+            <h2 no-margin class="uppercase fs-12">Postagens</h2>
+            <ion-button class="fs-16 txt4" size="small" fill="clear">
+              <ion-icon slot="icon-only" name="ios-arrow-round-forward"></ion-icon>
+            </ion-button>
+          </div>
+          <div class="wrap-gallery-info pd-10">
+          <div class="element-gallery pd-5" *ngFor="let postagem of listapostagens">
+              <div (click)="viewImg('lemon2.png')" class="wrap-element shadow-2">
+                <div class="thumb-view" [routerLink]="['/detalhes/' + postagem.id]" routerdirection="forward">
+                    <img [src]="postagem.imagem">
+                </div>
+                <div class="pd-10 txt-info txt-light">
+                  <h4 no-margin class="ellipsis fs-12 fw-600 spacing1 pdb-2 uppercase">Lorem Ipsum is simply dummy text</h4>
+                  <p no-margin class="ellipsis fs-12">Contrary to popular belief, Lorem Ipsum is not simply random text</p>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+         <!--  <div class="wrapper-masonry wrap-posted" *ngFor="let postagem of listapostagens">
+            <ion-row>
+              <ion-col>
+                <div class="element-gallery pdt-2" [routerLink]="['/detalhes/' + postagem.id]" routerdirection="forward">
+                  <img [src]="postagem.imagem">
+                </div>
+                
+              </ion-col>
+              
+            </ion-row>
+          </div> -->
+        </div>
+    
+      </div>
+</ion-content>
+
+<!-- <ion-header>
   <ion-toolbar>
     <ion-title>{{usuario.username}}</ion-title>
   </ion-toolbar>
@@ -42,7 +135,7 @@
     <div class="more-details">
       <p class="user-name"><strong>{{usuario.username}}</strong></p>
       <p class="user-bio">Área de Atuação</p>
-    </div>
+    </div> -->
   
 
   <!--   <ion-grid class="profile-intro">
@@ -56,7 +149,7 @@
     <p class="user-bio">Softwèrè Engineer</p>
   </div> -->
 
-  <ion-segment color="primary" scrollable>
+<!--   <ion-segment color="primary" scrollable>
     <ion-segment-button checked>
       <ion-label>Áreas</ion-label>
     </ion-segment-button>
@@ -83,4 +176,4 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-</ion-content>
+</ion-content> -->
