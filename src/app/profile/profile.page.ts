@@ -47,14 +47,14 @@ export class ProfilePage implements OnInit {
     this.listarpostagensusuario()
   }
 
-  async presentPopover(ev: any) {
+  /* async presentPopover(ev: any) {
     const popover = await this.popoverController.create({
         component: PopoverViewComponent,
         event: ev,
         translucent: true
     });
     return await popover.present();
-}
+} */
 
   profile() {
     //busca no webservice e caminho dos usuarios

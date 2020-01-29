@@ -73,7 +73,7 @@
   <ion-slides  [options]="slidesOptions">
     <ion-slide *ngFor="let postagem of listapostagens">
       <ion-card class="poster1_card" [routerLink]="['/detalhes/' + postagem.id]" routerdirection="forward">
-        <ion-img [src]="postagem.imagem"></ion-img>
+        <img [src]="postagem.imagem">
       </ion-card>
     </ion-slide>
   </ion-slides>

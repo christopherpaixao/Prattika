@@ -9,13 +9,14 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ImagePicker } from '@ionic-native/image-picker/ngx';//editor de imagem
 
+import { ImagePicker } from '@ionic-native/image-picker/ngx';//editor de imagem
 import { Camera } from '@ionic-native/Camera/ngx';
 import { File } from '@ionic-native/File/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import { MediaCapture } from '@ionic-native/media-capture/ngx';
 import { Media } from '@ionic-native/media/ngx';
+
  
 import { IonicStorageModule } from '@ionic/storage/';
 

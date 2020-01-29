@@ -28,6 +28,8 @@ plugins/
 plugins/android.json
 plugins/ios.json
 $RECYCLE.BIN/
+prattika.keystore
+publicar.txt
 
 .DS_Store
 Thumbs.db

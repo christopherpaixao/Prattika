@@ -4,7 +4,7 @@ import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { SERVER_URL } from 'src/environments/environment';
 import { Usuarios } from 'src/Models/Usuarios';
 import { NgForm } from '@angular/forms';
-import { ToastController } from '@ionic/angular';
+import { ToastController, Platform } from '@ionic/angular';
 
 
 @Component({
@@ -18,7 +18,7 @@ export class LoginPage implements OnInit {
   usuario: Usuarios
   idusuario: string
   constructor(public http: HttpClient, public route: ActivatedRoute, public router: Router,
-    private toastCtrl: ToastController) {
+    private toastCtrl: ToastController, public platform: Platform) {
     
     this.usuario = new Usuarios()
 
@@ -29,6 +29,12 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+    this.platform.backButton.subscribe(async () => {
+      if (this.router.isActive('/login', true) && this.router.url === '/login') {
+        navigator['app'].exitApp();
+      }
+  });
+    
   }
 
  /*  login() {

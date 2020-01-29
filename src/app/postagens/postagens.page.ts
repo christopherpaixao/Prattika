@@ -51,6 +51,7 @@ export class PostagensPage implements OnInit {
   deletarPostagen(id: number){
      this.http.delete(SERVER_URL  +  "/postagens/" + id).subscribe( 
     result=>{
+      
       //console.log()
       this.router.navigate(['/usuarios'])
       

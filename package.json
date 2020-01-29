@@ -2,7 +2,7 @@
   "name": "prattika",
   "version": "0.0.1",
   "author": "Devplus",
-  "homepage": "https://ionicframework.com/",
+  "homepage": "https://devplusagencia.com.br",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -20,7 +20,7 @@
     "@angular/platform-browser": "^7.2.2",
     "@angular/platform-browser-dynamic": "^7.2.2",
     "@angular/router": "^7.2.2",
-    "@ionic-native/camera": "^5.11.0",
+    "@ionic-native/camera": "^5.20.0",
     "@ionic-native/core": "^5.0.0",
     "@ionic-native/crop": "^5.11.0",
     "@ionic-native/file": "^5.11.0",
