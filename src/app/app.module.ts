@@ -16,6 +16,8 @@ import { File } from '@ionic-native/File/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import { MediaCapture } from '@ionic-native/media-capture/ngx';
 import { Media } from '@ionic-native/media/ngx';
+import { FileTransfer} from '@ionic-native/file-transfer/ngx';
+
 
  
 import { IonicStorageModule } from '@ionic/storage/';
@@ -39,6 +41,7 @@ import { AuthModule } from  './auth/auth.module';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ImagePicker,
     Camera,
+    FileTransfer,
     File,
     FilePath,
     MediaCapture,

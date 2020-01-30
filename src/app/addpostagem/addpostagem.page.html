@@ -1,14 +1,75 @@
-<!-- <ion-header>
-  <ion-toolbar>
-      <ion-buttons slot="start">
-          <ion-back-button></ion-back-button>
-        </ion-buttons>
-    <ion-title>addpostagem</ion-title>
-  </ion-toolbar>
-</ion-header> -->
+<ion-content>
+  <div class="wrap-register-v3">
+    <div class="wrap-interval pdl-30 pdr-30">
+      <div class="core-float">
+        <div class="brand">
 
-<ion-content color="primary">
-  <form (ngSubmit)="addPostagem()">
+          <p class="fs-20 txt-light pdl-70 pdr-70">Transmita Seu Conhecimento!</p>
+        </div>
+        <br />
+        <div class="main-form">
+          <form class="" novalidate (ngSubmit)="addPostagem()">
+            <ion-label class="txt-light fs-12 uppercase">Título</ion-label>
+            <ion-item lines="none" class="bdra-30 shadow-2 bg-light">
+              <ion-input type="text" [(ngModel)]="postagem.titulo" name="titulo"></ion-input>
+            </ion-item>
+            <ion-label class="txt-light fs-12 uppercase">Texto</ion-label>
+            <ion-item lines="none" class="bdra-30 shadow-2 bg-light mgt-5">
+              <ion-input type="text" [(ngModel)]="postagem.corpo" name="descricao"></ion-input>
+            </ion-item>
+            <ion-label class="txt-light fs-12 uppercase">Capa</ion-label>
+            <ion-item lines="none" class="bdra-30 shadow-2 bg-light mgt-5">
+              <ion-input type="text" [(ngModel)]="postagem.imagem" name="imagem">{{imageFileName}}</ion-input>
+            </ion-item>
+            <!-- teste captura de imagem -->
+            <ion-button size="small" (click)="getPicture(1)">Show Camera</ion-button>
+            <ion-button size="small" (click)="getPicture(0)">Show Album</ion-button>
+          <ion-item lines="none">
+            <ion-label>Return image file URI</ion-label>
+            <ion-toggle energized [(ngModel)]="useURI"></ion-toggle>
+          </ion-item>
+
+          <ion-card>
+            <ion-card-content>
+              <img [src]="imageData" *ngIf="imageData"/>
+            </ion-card-content>
+            <ion-card-header>
+              <ion-card-title>
+                <div *ngIf="useURI">
+                  Using URI
+                </div>
+                <div *ngIf="!useURI">
+                  Using Base64
+                </div>
+                <p *ngIf="useURI">
+                  Your URI is {{ imageData }}
+                </p>
+                <p *ngIf="!useURI">
+                  Your Base64 image has {{ (imageData + '').length }} bytes
+                </p>
+              </ion-card-title>
+            </ion-card-header>
+          </ion-card>
+            <!--  -->
+            
+            <ion-item>
+              <ion-button (click)="uploadFile()">Upload</ion-button>
+            </ion-item>
+            <br />
+            <ion-button shape="round" expand="block" fill="solid" class="uppercase spacing1 fw-600" type="submit">
+              Publicar
+            </ion-button>
+          </form>
+          <br />
+        </div>
+      </div>
+    </div>
+    <div class="bg-img">
+      <img src="assets/img/lemon21.jpg">
+    </div>
+  </div>
+
+  <!-- <form (ngSubmit)="addPostagem()">
     <ion-grid>
       <ion-row color="primary" justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
@@ -18,8 +79,8 @@
           <ion-item>
             <ion-label>Título</ion-label>
             <ion-input type="text" [(ngModel)]="postagem.titulo" name="titulo"></ion-input>
-          </ion-item>
-         <!--  <ion-item>
+          </ion-item> -->
+  <!--  <ion-item>
               <ion-label>Gênero</ion-label>
               <ion-select [(ngModel)]="postagem.genero_post" name="genero_post">
                   <ion-select-option value="romance">Românce</ion-select-option>
@@ -29,25 +90,15 @@
                 </ion-select>
                <ion-input type="text" [(ngModel)]="usuario.userarea" name="userarea"></ion-input> 
             </ion-item> -->
-          <ion-item>
+  <!--   <ion-item>
             <ion-label>Texto</ion-label>
             <ion-textarea type="text" [(ngModel)]="postagem.corpo" name="descricao"></ion-textarea>
           </ion-item>
           <ion-item>
             <ion-label>Imagem</ion-label>
             <ion-input type="text" [(ngModel)]="postagem.imagem" name="imagem" ></ion-input>            
-          </ion-item>
-          <ion-card>
-            <img *ngIf="!fileUrl" src="assets/no-image.jpeg"/>
-            <img *ngIf="fileUrl" src="{{fileUrl}}"/>
-            <ion-card-content>
-              <ion-button color="medium" size="large" (click)="cropUpload()">
-                <ion-icon slot="icon-only" name="camera"></ion-icon>
-              </ion-button>
-            </ion-card-content>
-          </ion-card>
-
-          <!-- <ion-button size="small" (click)="getPicture(1)">Show Camera</ion-button>
+          </ion-item> -->
+  <!-- <ion-button size="small" (click)="getPicture(1)">Show Camera</ion-button>
             <ion-button size="small" (click)="getPicture(0)">Show Album</ion-button>
           <ion-item lines="none">
             <ion-label>Return image file URI</ion-label>
@@ -75,14 +126,14 @@
               </ion-card-title>
             </ion-card-header>
           </ion-card> -->
-          
-          <div padding>
+
+  <!--  <div padding>
             <ion-button size="large" type="submit" expand="block">Publicar</ion-button>
           </div>
         </ion-col>
       </ion-row>
     </ion-grid>
-  </form>
+  </form> -->
   <!-- <button ion-button (click)="abrirCamera()">Abrir Camera</button>
           <button ion-button (click)="abrirGaleria()">Abrir Galeria</button>
           <img [src]="base64Image"/> -->
