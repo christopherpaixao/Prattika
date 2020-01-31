@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'usuarios',
     pathMatch: 'full'
   },
   { path: 'home', loadChildren: './home/home.module#HomePageModule'  },
@@ -21,7 +21,9 @@ const routes: Routes = [
   { path: 'timeline/:id', loadChildren: './timeline/timeline.module#TimelinePageModule' },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'register', loadChildren: './auth/register/register.module#RegisterPageModule' },
-  { path: 'profile/:id', loadChildren: './profile/profile.module#ProfilePageModule' }
+  { path: 'profile/:id', loadChildren: './profile/profile.module#ProfilePageModule' },  { path: 'file', loadChildren: './file/file.module#FilePageModule' },
+  { path: 'cloud-list', loadChildren: './cloud-list/cloud-list.module#CloudListPageModule' }
+
 
 
 ];

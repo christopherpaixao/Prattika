@@ -36,6 +36,10 @@
           <ion-button [routerLink]="['/editusuario/' + usuario.id]" routerdirection="forward">
             <ion-icon name="create"></ion-icon>
           </ion-button>
+
+          <ion-button [routerLink]="['/file']" routerdirection="forward">
+            <ion-icon name="filing"></ion-icon>
+          </ion-button>
           
           <ion-button (click)='deletarUsuario(usuario.id)'>
             <ion-icon name="trash"></ion-icon>
