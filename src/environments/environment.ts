@@ -3,7 +3,18 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: true
+  production: true,
+  firebase: {
+    apiKey: "AIzaSyCmirODw1hVXVZN2ayq4I3xQDLvHH-QI5I",
+    authDomain: "missao-saude-76ab6.firebaseapp.com",
+    databaseURL: "https://missao-saude-76ab6.firebaseio.com",
+    projectId: "missao-saude-76ab6",
+    storageBucket: "missao-saude-76ab6.appspot.com",
+    messagingSenderId: "934842231492",
+    appId: "1:934842231492:web:365e5289235daaba947791",
+    measurementId: "G-6BJNKD0H5C"
+
+  }
 };
 
 export const SERVER_URL="http://prattika.com.br:21019"
