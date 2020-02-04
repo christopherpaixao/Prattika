@@ -19,12 +19,21 @@
             </ion-item>
             <ion-label class="txt-light fs-12 uppercase">Capa</ion-label>
             <ion-item lines="none" class="bdra-30 shadow-2 bg-light mgt-5">
-              <ion-input type="text" [(ngModel)]="postagem.imagem" name="imagem">{{imageFileName}}</ion-input>
+              <ion-input type="text" [(ngModel)]="postagem.imagem" name="imagem" value="{{ downloadUrl | async}}"></ion-input>
             </ion-item>
             <!-- teste captura de imagem -->
+            <ion-button (click)="openGalery(0)" expand="block"> Ari Galeria</ion-button>
+            
+            <ion-item>
+              <ion-label>progress do upload: {{uploadPercent | async}}%</ion-label>
+            </ion-item>
+            <!-- <ion-item>
+              <ion-label class="ion-text-wrap"> URL de download: {{ downloadUrl | async}} </ion-label>
+            </ion-item> -->
+           <!-- <img [src]="downloadUrl | async" *ngIf="downloadUrl | async">
             <ion-button size="small" (click)="getPicture(1)">Show Camera</ion-button>
             <ion-button size="small" (click)="getPicture(0)">Show Album</ion-button>
-          <ion-item lines="none">
+           <ion-item lines="none">
             <ion-label>Return image file URI</ion-label>
             <ion-toggle energized [(ngModel)]="useURI"></ion-toggle>
           </ion-item>
@@ -53,7 +62,7 @@
             <ion-item>
               <ion-button (click)="uploadFile()">Upload</ion-button>
             </ion-item>
-            <br />
+            <br />--> 
             <ion-button shape="round" expand="block" fill="solid" class="uppercase spacing1 fw-600" type="submit">
               Publicar
             </ion-button>

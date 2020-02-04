@@ -4,8 +4,13 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Postagens } from 'src/Models/Postagens';
 import { Camera, CameraOptions } from '@ionic-native/Camera/ngx';
-import { NavController, LoadingController, ToastController } from '@ionic/angular';
+import { NavController, LoadingController, ToastController, Platform } from '@ionic/angular';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
+import { File } from '@ionic-native/File/ngx';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-addpostagem',
@@ -13,6 +18,8 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
   styleUrls: ['./addpostagem.page.scss'],
 })
 export class AddpostagemPage implements OnInit {
+  public uploadPercent: Observable<number>;
+  public downloadUrl: Observable<string>;
 
   postagem: Postagens
   base64Image: string
@@ -25,8 +32,8 @@ export class AddpostagemPage implements OnInit {
 
   constructor(public http: HttpClient, public route: ActivatedRoute, public router: Router,
     private camera: Camera, public navCtrl: NavController, private transfer: FileTransfer,
-    public loadingCtrl: LoadingController,
-  public toastCtrl: ToastController) {
+    public loadingCtrl: LoadingController, private platform: Platform, public toastCtrl: ToastController,
+    private file: File, private afStorage: AngularFireStorage) {
 
     this.postagem = new Postagens()
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -59,37 +66,8 @@ export class AddpostagemPage implements OnInit {
     toast.catch();
   }
 
-  uploadFile() {
-    let loader = this.loadingCtrl.create({
-      
-    });
-    
-    const fileTransfer: FileTransferObject = this.transfer.create();
-  
-    let options: FileUploadOptions = {
-      fileKey: 'ionicfile',
-      fileName: 'ionicfile',
-      chunkedMode: false,
-      mimeType: "image/jpeg",
-      headers: {}
-    }
-  
-    fileTransfer.upload(this.imageData, 'http://www.devplusagencia.com.br/prattika/', options)
-      .then((data) => {
-      console.log(data+" Uploaded Successfully");
-      this.imageFileName = "http://www.devplusagencia.com.br/testeimage.jpg"
-      loader.then();
-      this.presentToast("Image uploaded successfully");
-    }, (err) => {
-      console.log(err);
-      loader.then();
-      
-      this.presentToast(err);
-    });
-  }
-
   //método funcionando
-  getPicture(srcType: number) {
+  async openGalery(srcType: number) {
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.useURI ? this.camera.DestinationType.FILE_URI : this.camera.DestinationType.DATA_URL,
@@ -99,137 +77,43 @@ export class AddpostagemPage implements OnInit {
       targetWidth: 800,
       targetHeight: 800,
       saveToPhotoAlbum: true,
+      correctOrientation: true
     };
+    try{
+      const fileUri: string = await this.camera.getPicture(options);
+      let file: string;
 
-    this.camera.getPicture(options).then((imageData) => {
-      // imageData is either a base64 encoded string or a file URI
-      if (this.useURI) {
-        const temp = imageData.split('?');
-        this.imageData = temp[0];
-        this.imageData = (window as any).Ionic.WebView.convertFileSrc(imageData);
-      } else {
-        this.imageData = 'data:image/jpeg;base64,' + imageData;
-      }
-    },
-      (err) => {
-        console.log(err);
-      });
+      if (this.platform.is('ios')){
+            file = fileUri.split('/').pop();
+      }else{ file = fileUri.substring(fileUri.lastIndexOf('/') + 1, fileUri.indexOf('?'));
+    }
+      //path armazena o caminho do arquivo
+      const path: string = fileUri.substring(0, fileUri.lastIndexOf('/'));
+      //passando imagem como arquivo binário
+      const buffer: ArrayBuffer = await this.file.readAsArrayBuffer(path, file);
+      //conversão do arquivo binário da imagem em imagem
+      const blob: Blob = new Blob([buffer], { type: 'image/jpeg'});
+      //
+      this.uploadPicture(blob);
+      
+    }catch(error){
+      console.error(error);
+    }
   }
 
+  uploadPicture(blob: Blob){
+    //criar referência para caminho da imagem com feedback pro usuário
+    const ref = this.afStorage.ref('postagens/post.jpg')
+    //const ref = this.afStorage.ref('postagens/post.jpg').put(blob); sem feed back
+    //tarefa
+    const task = ref.put(blob);
 
-
-
-  /* getPicture(srcType: number) {
-    const options: CameraOptions = {
-      quality: 100,
-      destinationType: this.useURI ? this.camera.DestinationType.FILE_URI : this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE,
-      sourceType: srcType,
-      targetWidth: 800,
-      targetHeight: 800,
-      saveToPhotoAlbum: true,
-    };
-    newImage => {
-      console.log('new image path is: ' + newImage);
-      const fileTransfer: FileTransferObject = this.transfer.create();
-      const uploadOpts: FileUploadOptions = {
-        fileKey: 'file',
-        fileName: newImage.substr(newImage.lastIndexOf('/') + 1)
-      };
-
-      fileTransfer.upload(newImage, 'http://192.168.0.7:3000/api/upload', uploadOpts)
-               .then((data) => {
-                 console.log(data);
-                 this.imageData = JSON.parse(data.response);
-                 console.log(this.imageData);
-                 this.useURI = this.imageData.useURI;
-               },
-               (err) => {
-                console.log(err);
-              });
-
-      this.camera.getPicture(options).then((imageData) => {
-        // imageData is either a base64 encoded string or a file URI
-        if (this.useURI) {
-          const temp = imageData.split('?');
-          this.imageData = temp[0];
-          this.imageData = (window as any).Ionic.WebView.convertFileSrc(imageData);
-        } else {
-          this.imageData = 'data:image/jpeg;base64,' + imageData;
-        }
-
-
-      },
-        (err) => {
-          console.log(err);
-        });
-    }
-  } */
-
-
-
-  /* getPicture(srcType: number) {
-    const options: CameraOptions = {
-      quality: 100,
-      destinationType: this.useURI ? this.camera.DestinationType.FILE_URI : this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE,
-      sourceType: srcType,
-      targetWidth: 800,
-      targetHeight: 800,
-      saveToPhotoAlbum: true,
-    };
- 
-    this.camera.getPicture(options).then((imageData) => {
-      // imageData is either a base64 encoded string or a file URI
-      if (this.useURI) {
-         const temp = imageData.split('?');
-         this.imageData = temp[0];
-        this.imageData = (window as any).Ionic.WebView.convertFileSrc(imageData);
-      } else {
-        this.imageData = 'data:image/jpeg;base64,' + imageData;
-      }
-    },
-     (err) => {
-      console.log(err);
-    });
-  } */
-
-  /* abrirCamera(){
-    const options: CameraOptions = {
-      quality: 100,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE
-    }
- 
-    this.camera.getPicture(options).then((ImageData) =>{
-      // imageData is either a base64 encoded string or a file URI
-      //If it's base64:
-      this.base64Image = 'data:image/jpeg;base64,' + ImageData;
-    }, (err) => {
-      //Handle error
-    })
+    //progresso em porcentagem
+    this.uploadPercent = task.percentageChanges();
+    //caminho da imagem carregada
+    task.snapshotChanges().pipe(
+      finalize(() => this.downloadUrl = ref.getDownloadURL())
+    ).subscribe();
   }
- 
-  abrirGaleria(){
-    const options: CameraOptions = {
-      quality: 100,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE,
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY //abrir a galera
-    }
- 
-    this.camera.getPicture(options).then((ImageData) =>{
-      // imageData is either a base64 encoded string or a file URI
-      //If it's base64:
-      this.base64Image = 'data:image/jpeg;base64,' + ImageData;
-    }, (err) => {
-      //Handle error
-    })
- 
-  } */
 
 }

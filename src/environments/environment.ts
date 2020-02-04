@@ -5,15 +5,14 @@
 export const environment = {
   production: true,
   firebaseConfig: {
-    apiKey: "AIzaSyCmirODw1hVXVZN2ayq4I3xQDLvHH-QI5I",
-    authDomain: "missao-saude-76ab6.firebaseapp.com",
-    databaseURL: "https://missao-saude-76ab6.firebaseio.com",
-    projectId: "missao-saude-76ab6",
-    storageBucket: "missao-saude-76ab6.appspot.com",
-    messagingSenderId: "934842231492",
-    appId: "1:934842231492:web:365e5289235daaba947791",
-    measurementId: "G-6BJNKD0H5C"
-
+    apiKey: "AIzaSyDOpxE4Xa7jjWMTtmxXbiAtP_BgyKbosdU",
+    authDomain: "prattika-8e350.firebaseapp.com",
+    databaseURL: "https://prattika-8e350.firebaseio.com",
+    projectId: "prattika-8e350",
+    storageBucket: "prattika-8e350.appspot.com",
+    messagingSenderId: "680864243538",
+    appId: "1:680864243538:web:3246e74b1d65f5bd6a648b",
+    measurementId: "G-05YKHP7QYZ"
   }
 };
 
